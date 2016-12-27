@@ -1,0 +1,13 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.7
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceSets.main.java.srcDirs = [ "src/" ]
+
+//Allways pack before run
+tasks.assemble.dependsOn tasks.getByPath(":texture-packer:run")
+
+eclipse.project {
+    name = appName + "-core"
+}
