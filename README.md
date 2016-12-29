@@ -12,19 +12,19 @@ At the start of each game, the decks for each player are shuffled then placed fa
 
 Below is a preliminary image of the proposed layout for the gameplay areas.
 
-!['Card Game' sample layout](/screenshots/cardgame-infographic-1.png?raw=true "'Card Game' Sample View Layout')
+<img src="screenshots/cardgame-infographic-1.png" alt="Card Game sample view layout" width="600"/>
 
 The steps for each turn are as follows:
 
   1. Beginning of turn events.
   2. Current player fills waiting slot with top card from deck.
-  3. Player may use one power/ability from one of his/her creatures in play.
+  3. Player may use one power from one of his/her creatures in play.
   4. Player may switch primary creature with a waiting creature.
   5. Attack Phase 
     1. Primary creature deals 'attack' damage to opposing primary creature.
     2. Opposing primary creature deals 'attack' damage.
   6. If player did not switch creatures at step 4, they may now.
-  7. Player may use one power/ability from one of his/her creatures in play **other than** the creature that used an ability earlier this turn. 
+  7. Player may use one power from one of his/her creatures in play **other than** the creature that used a power earlier this turn. 
   8. End of turn events.
   9. Check if either player has no creatures in play.
 
