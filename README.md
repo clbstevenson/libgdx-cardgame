@@ -10,9 +10,7 @@ The 'Card Game' (wip) is a turn-based two-player game. The closest relative coul
 
 At the start of each game, the decks for each player are shuffled then placed facedown at the edge of the play area. The play area contains three slots: one 'primary' slot and two 'waiting' slots below the primary slot. To begin, the players draw the top card of their decks and place it into the primary slot. The two waiting slots are also filled by drawing two cards. The winner of a coin toss (?) begins the game. 
 
-Below is a preliminary image of the proposed layout for the gameplay areas.
 
-<img src="screenshots/cardgame-infographic-1.png" alt="Card Game sample view layout" width="600"/>
 
 The steps for each turn are as follows:
 
@@ -34,31 +32,57 @@ The game ends when one player has no cards remaining in their play area after an
 
 For this project, the plan is to use Scene2D for constructing the user interface. For the overview of the game area including the side areas, there should be three sections laid out horizontally. For reference, below is a sample layout for the user interface.
 
-<img src="screenshots/cardgame-infographic-1c.png" alt="Sample Layout with highlighted columns left, middle, and right" width="600"/>
+Below are some preliminary images of the proposed layout for the gameplay areas.
 
- 1. **Left Section**
+#### Layout Version 1
+<img src="screenshots/cardgame-infographic-1.png" alt="Card Game sample view layout" width="480"/>
+
+#### Layout Version 2
+<img src="screenshots/cardgame-infographic-2.png" alt="Card Game sample view layout version 2" width="480"/>
+
+#### Layout Version 3
+<img src="screenshots/cardgame-infographic-3.png" alt="Card Game sample view layout version 3" width="480"/>
+
+
+### Frame Analysis of Version 3
+Update: The current version to be used for the layout is **Version 3**. This version includes an updates right-side section for displaying the current step in the turn. The other main aspect is that when a card is viewed, the contents will be displayed on the bottom right with more details in addition to the card scaling slightly.
+
+<!--<img src="screenshots/cardgame-infographic-1c.png" alt="Sample Layout with highlighted columns left, middle, and right" width="600"/>-->
+
+<img src="screenshots/cardgame-infographic-3b.png" alt="Sample Layout version 3 with highlighted frames" width="600"/>
+
+ 1. **Frame 1** - Decks and Discard Piles
+   
+    The first section will contain the two players' decks and discard piles. The player's own deck/discard piles iwll be at the bottom of this section, with their opponents displayed at the top.
+
+    Whenever the player needs to draw a card from their deck (start of the game, filling an empty play area slot, etc) an animation will play for moving the card from the top of the deck to the destination. An idea would also to be rotating the card to "flip" it over to display the card. Perhaps to achieve this, the deck of cards could be physical Card objects that can be translated and thus "animated" as being flipped.
  
-  The first section will be the left-section containing the two players' decks and discard piles. The player's own deck/discard piles will be at the bottom of this section, with their opponents displayed at the top.
+    The number of cards in each player's decks and discard piles could be displayed next to each pile.
  
-  Whenever the player needs to draw a card from their deck (start of the game, filling an empty play area slot, etc) an animation will play for moving the card from the top of the deck to the destination. An idea would also to be rotating the card to "flip" it over to display the card. Perhaps to achieve this, the deck of cards could be physical Card objects that can be translated and thus "animated" as being flipped.
- 
-  The number of cards in each player's decks and discard piles should be displayed next to each pile.
- 
-  Also, player names could probably be displayed in the Left Section.
- 
- 2. **Middle Section**
- 
-  The second section is the middle-section containing the cards currently in play. The primary creature slot for each player is centered in the frame and close to the player-opponent divide. Two slots for the waiting area creature cards are below the primary slot.
- 
-  There is a possible issue with this layout. The pyramid style layout of the primary and the waiting area cards leaves some extra "white space" to the left and the right of the primary cards. This is less than ideal, but maybe it'd be nice to reduce UI overload. 
- 
-  Any creature animations, such as attacking or using their powers, will be displayed in this section as well. This may not really be a relevant point as any Entity System will be processing this, not the UI, but it is nice to know what will be happening in each section. 
- 
- 3. **Right Section**
- 
-  The third section is the right-section containing other player data. The main focus is displaying the number of "power tokens" remaining for the player. The tokens are used up whenever a power is activated from one of their creatures in play. To display the number of tokens, either a visible image can be drawn, or just a single image with a text counter. The latter may be preferable because a.) easier to add and remove tokens and b.) easier scaling or increasing total tokens for balancing, such as a higher starting count.
- 
-  Another element to be displayed is possibily "elemental power tokens", such as fire, water, and earth. This is something that is still a work in progress. Originally, these elemental tokens could be added to creatures to boost their attack. This may still be a viable option for gameplay. Also, another option for these tokens would be similar to the standard "power tokens". They could be used up to activate certain abilities. In this way they would be treated like mana from Magic: The Gathering.
+    Also, player names could probably be displayed in *Frame 1*.
   
-  Other data or aspects can also be displayed in this section because of some extra space should the tokens can be reduced to labels and counters.
+ 2. **Frame 2** - Play Area or Battlefield
  
+    The second section is the middle-section containing the cards currently in play. The primary creature slot for each player is centered in the frame and close to the player-opponent divide. Two slots for the waiting area creature cards are below the primary slot.
+   
+    When a card is mousedover or touched, the card will scale slightly. The contents of the card will be shown in *Frame 5* along with an explanation of any abilities, keywords, or powers. The scaling may cause an issue with overlap with nearby elements, so this should be considered and checked.
+   
+    Any card animations, such as attacking or using their powers, will be displayed in this section as well. 
+   
+    The remaining number of power tokens and elemental tokens will also be displayed in *Frame 2*. They will be shown most likely as a text counter for each type to reduce space.
+   
+ 3. **Frame 3** - Match Log
+  
+    A small frame in the top left will display the actions of the game. Events in the log can include: drawing cards into play, activating powers, attacking, dealing damage, and using elemental or power tokens. The size of this frame is currently set as 1/3rd of the column, however it could be reduced because it is just some lines of text.
+    
+ 4. **Frame 4** - Turn Tracker
+  
+    In *Frame 4*, the list of steps for each turn as displayed. The current step for each player will be highlighted. It may be necessary for some turns to require approval by the player to continue. In these cases, a button with a countdown timer can be displayed along the bottom of *Frame 4*.
+    
+ 5. **Frame 5** - Mouseover Contents
+  
+    The fifth frame will be used to show the contents of cards that are touched or moused over. It will also provide some explanation for abilities, powers, and keywords to assist the players. The image of the card could be ignored, but it would be a nice touch. 
+    
+    This frame will need to be examined so that enough space is provided for explanations.
+    
+    One note to consider is if events in the log should trigger an update to *Frame 5*. It would be nice, but not immediately necessary.
