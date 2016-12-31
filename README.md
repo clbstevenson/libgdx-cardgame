@@ -30,7 +30,7 @@ The game ends when one player has no cards remaining in their play area after an
 
 ## User Interface
 
-For this project, the plan is to use Scene2D for constructing the user interface. For the overview of the game area including the side areas, there should be three sections laid out horizontally. For reference, below is a sample layout for the user interface.
+For this project, the plan is to use Scene2D for constructing the user interface. For the overview of the game area including the side areas, there should be three sections laid out horizontally.
 
 Below are some preliminary images of the proposed layout for the gameplay areas.
 
@@ -86,3 +86,10 @@ Update: The current version to be used for the layout is **Version 3**. This ver
     This frame will need to be examined so that enough space is provided for explanations.
     
     One note to consider is if events in the log should trigger an update to *Frame 5*. It would be nice, but not immediately necessary.
+    
+## Card Design
+
+The layout and design of the cards will be based on the layout and design from the original card game. Below is a sample layout based on the original cards.
+
+#### Card Design Version 1
+<img src="screenshots/card-design-1.png" alt="Card Design version 1" width="256"/>
