@@ -103,16 +103,30 @@ Some of the features in this card layout can be changed or updated, but this is 
 
 First, each card has a name and a type. The name is unique to the card. The type, drawn as a colored circle, is the element type of the card. The list of element types include fire, water, earth, and normal (which is a non-elemental type). The possible element types can also be updated to include additional types. Further, it could be necessary or useful to have creature types, such as Eggs, Dragons, or Humans. The original game had a general sense of these types but were not directly referenced. Including the explicit creature type of the cards could add more abilities or synergies.
 
-Below the creature name is the creature image. 
+Below the creature name is the creature image. The art for the original card game was drawn in a very simple art style using colored pencils. It would be interesting to first, include the original card art and second, base all future card art and designs with the colored pencil artwork. The  images would be drawn by hand and then scanned in to be including into the game.
 
-Each creature will have a starting Life amount and an Attack value.
+Each creature will have a starting Life amount and an Attack value. The Attack is the amount of damage the creature will deliver to the opposing primary creature. During the Attack Step, each primary creature deals their attack damage to the opposing primary creature.The Life denotes how much damage the creature can take before it dies. When a creature dies, it is immediately placed into the owner's graveyard. However, if the creature that dies is in the primary slot, the waiting creatures do not move up until the owner is able to fill the slot. Some creatures may have an Attack value of zero, so they will deal no damage when attacking. 
 
 Creature cards may also have **powers** and **abilities**. 
 
   * **Powers**
   
-  Powers are activated skills/functions that may cost a certain number of the controlling player's power tokens.
+  Powers are activated skills/functions that may cost a certain number of the controlling player's power tokens. Most powers can be used once each turn, however they may be some more interesting powers that can only be used once per game. It may be necessary to label the per-turn and per-game powers separately, such as "power" vs. "superpower" (tbd). To activate a power, the player must first click on the creature and then click on the power. Once the power is used, it will be grayed out until it can be used again (next turn or next game).
+  
+  Examples of powers include:
+   * Power [1]: Deal 2 damage to one enemy creature.
+   * Power [2]: Switch opponents primary creature with a waiting creature of your choice.
+   * Power [1]: Gain 2 power tokens
+   * Power [4]: Sacrifice *this creature*: Kill your opponent's primary creature.
+   * Super Power(tbd) [5]: Switch your opponent's primary creature with a waiting creature of your choice. Deal 5 damage to both of those creatures.
 
   * **Abilities**
   
-  Abilities are passive skills that may trigger automatically and do not require manual activation by the player.
+  Abilities are passive skills that may trigger automatically and do not require manual activation by the player. The abilities can be triggered at the start of the turn, end of the turn, when the creature attacks, or any other sort of trigger. In order for the player to know when a power is triggered, the card may be displayed or enlarged in some manner to make it obvious (similar to Hearthstone displaying playing cards).
+  
+  Examples of abilities include:
+   * Ability: Whenever *this creature* is dealt damage, deal 1 damage to all other creatures.
+   * Ability: If *this creature* is your only creature in play at the beginning of your turn, *this creature* gains 5 Life.
+   * Ability: When *this creature* is dealt damage, you *may* have another creature gain that much Life.
+   * Ability: When *this creature* is put into the graveyard, you *may* switch your opponent's primary creature with a waiting creature of your choice.
+   * Ability: At the beginning of your turn if *this creature* is in a waiting slot, gain 1 Power token.
