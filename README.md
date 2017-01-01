@@ -35,17 +35,22 @@ For this project, the plan is to use Scene2D for constructing the user interface
 Below are some preliminary images of the proposed layout for the gameplay areas.
 
 #### Layout Version 1
-<img src="screenshots/cardgame-infographic-1.png" alt="Card Game sample view layout" width="480"/>
+<img src="screenshots/cardgame-infographic-1.png" alt="Card Game sample view layout" width="512"/>
 
 #### Layout Version 2
-<img src="screenshots/cardgame-infographic-2.png" alt="Card Game sample view layout version 2" width="480"/>
+<img src="screenshots/cardgame-infographic-2.png" alt="Card Game sample view layout version 2" width="512"/>
 
 #### Layout Version 3
-<img src="screenshots/cardgame-infographic-3.png" alt="Card Game sample view layout version 3" width="480"/>
+<img src="screenshots/cardgame-infographic-3.png" alt="Card Game sample view layout version 3" width="512"/>
+
+#### Layout Version 4
+<img src="screenshots/cardgame-infographic-4.png" alt="Card Game sample view layout version 4" width="512"/>
 
 
-### Frame Analysis of Version 3
-Update: The current version to be used for the layout is **Version 3**. This version includes an updates right-side section for displaying the current step in the turn. The other main aspect is that when a card is viewed, the contents will be displayed on the bottom right with more details in addition to the card scaling slightly.
+### Frame Analysis of Interface
+Update: The current version to be used for the layout is **Version 4**. This version includes adjustments to the right column to provide more space for the turn tracker by reducing space to the Match Log. Also, the decks and graveyard piles frame were adjusted so that when clicked, the graveyard could be displayed. Even though the most recent version is *Version 4*, the main features are similar enough to *Version 3* that the Frame Analysis will be generally consistent, with minor updates. To be completely true, the other reason for not updating the frame analysis is because I did not want to create another image with the colored highlighted frames.
+
+Version 3: This version includes an updates right-side section for displaying the current step in the turn. The other main aspect is that when a card is viewed, the contents will be displayed on the bottom right with more details in addition to the card scaling slightly.
 
 <!--<img src="screenshots/cardgame-infographic-1c.png" alt="Sample Layout with highlighted columns left, middle, and right" width="600"/>-->
 
@@ -93,3 +98,21 @@ The layout and design of the cards will be based on the layout and design from t
 
 #### Card Design Version 1
 <img src="screenshots/card-design-1.png" alt="Card Design version 1" width="256"/>
+
+Some of the features in this card layout can be changed or updated, but this is the same layout as the original game.
+
+First, each card has a name and a type. The name is unique to the card. The type, drawn as a colored circle, is the element type of the card. The list of element types include fire, water, earth, and normal (which is a non-elemental type). The possible element types can also be updated to include additional types. Further, it could be necessary or useful to have creature types, such as Eggs, Dragons, or Humans. The original game had a general sense of these types but were not directly referenced. Including the explicit creature type of the cards could add more abilities or synergies.
+
+Below the creature name is the creature image. 
+
+Each creature will have a starting Life amount and an Attack value.
+
+Creature cards may also have **powers** and **abilities**. 
+
+  * **Powers**
+  
+  Powers are activated skills/functions that may cost a certain number of the controlling player's power tokens.
+
+  * **Abilities**
+  
+  Abilities are passive skills that may trigger automatically and do not require manual activation by the player.
