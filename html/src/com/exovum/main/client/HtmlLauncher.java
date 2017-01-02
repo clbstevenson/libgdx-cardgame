@@ -1,4 +1,4 @@
-package com.exovum.testgame.client;
+package com.exovum.main.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;

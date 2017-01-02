@@ -4,7 +4,7 @@ sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
 
 //project.ext.mainClassName = "DesktopLauncher"
-project.ext.mainClassName = "com.exovum.ld37warmup.desktop.DesktopLauncher"
+project.ext.mainClassName = "com.exovum.main.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../android/assets");
 
 task run(dependsOn: classes, type: JavaExec) {

@@ -1,4 +1,4 @@
-package com.exovum.testgame.android;
+package com.exovum.main.android;
 
 import android.os.Bundle;
 
