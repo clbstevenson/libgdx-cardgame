@@ -1,0 +1,17 @@
+# This is the official list of the AUTHORS of libgdx-cardgame
+# for copyright purposes. This is the names of copyright owners.
+
+Caleb Stevenson https://github.com/exovum
+
+# Below is the list of people who have contributed to the project
+# yet are not the owners of the project for copyright purposes.
+# If any contributions are made to the project,
+# please list your name here. By doing so, you must also agreee to
+# and be within the terms of the Apache 2 license.
+
+# Also note, some of the base code for the project using
+# Ashley, Box2D, and libgdx together is from the project at
+#   https://github.com/RoaringCatGames/libgdx-ashley-box2d-example
+# and additionally
+#   https://github.com/saltares/ashley-superjumper
+

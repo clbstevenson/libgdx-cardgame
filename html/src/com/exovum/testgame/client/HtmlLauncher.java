@@ -3,7 +3,7 @@ package com.exovum.testgame.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.exovum.ld37warmup.LD37Game;
+import com.exovum.tools.LD37Game;
 
 public class HtmlLauncher extends GwtApplication {
 

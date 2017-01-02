@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.exovum.ld37warmup.LD37Game;
-import com.exovum.testgame.BrownieBouncer;
+import com.exovum.tools.LD37Game;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
