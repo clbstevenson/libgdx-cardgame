@@ -10,7 +10,7 @@ public class ScreenDispatcherWarmup implements IScreenDispatcher {
     private boolean isCurrenScreenEnded = false;
     private int currentIndex = 0;
 
-    ScreenDispatcherWarmup(){
+    public ScreenDispatcherWarmup(){
         screens = new ArrayList<>();
     }
 
@@ -18,10 +18,21 @@ public class ScreenDispatcherWarmup implements IScreenDispatcher {
         screens.add(screen);
     }
 
+    @Override
+    public void addScreen(Screen screen) {
+        screens.add(screen);
+    }
 
     @Override
     public void endCurrentScreen() {
         isCurrenScreenEnded = true;
+    }
+
+    @Override
+    public Screen getCurrentScreen() {
+        if(screens.size() <= currentIndex)
+            return null;
+        return screens.get(currentIndex);
     }
 
     @Override
@@ -36,7 +47,7 @@ public class ScreenDispatcherWarmup implements IScreenDispatcher {
             }
         }
 
-        if(screens.size() > currentIndex){
+        if(screens.size() >= currentIndex){
             return screens.get(currentIndex);
         }else{
             return screens.get(0);
