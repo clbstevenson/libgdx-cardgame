@@ -1,0 +1,20 @@
+
+ui.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+container_blue
+  rotate: false
+  xy: 0, 0
+  size: 41, 45
+  orig: 41, 45
+  offset: 0, 0
+  index: -1
+container_gold
+  rotate: false
+  xy: 43, 0
+  size: 41, 45
+  orig: 41, 45
+  offset: 0, 0
+  index: -1

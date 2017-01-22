@@ -1,0 +1,71 @@
+{
+
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {
+    "default": {
+      "file": "../fonts/candara16b.fnt"
+    },
+    "large": {
+      "file": "../fonts/candara36b.fnt"
+    }
+  },
+
+  "com.badlogic.gdx.graphics.Color": {
+    "white": {
+      "a": 1,
+      "r": 1,
+      "g": 1,
+      "b": 1
+    },
+    "green": {
+      "a": 1,
+      "r": 0,
+      "g": 1,
+      "b": 0
+    },
+    "gray": {
+      "a": 1,
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5
+    },
+    "black": {
+      "a": 1,
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "default": {
+      "font": "default",
+      "fontColor": "white"
+    },
+    "container_gold": {
+      "background": "container_gold",
+      "font": "default",
+      "fontColor": "green"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+    "default": {
+      "font": "default",
+      "fontColor": "white"
+    },
+    "container_gold": {
+      "down": "container_gold",
+      "up": "container_blue",
+      //"disabled": "container_grey",
+      "font": "default",
+      "fontColor": "green"
+    },
+    "container_gold_small": {
+      "down": "container_gold",
+      "up": "container_blue",
+      //"disabled": "container_grey",
+      "font": "default",
+      "fontColor": "green"
+    }
+  }
+
+}

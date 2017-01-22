@@ -16,6 +16,10 @@ public class GameTexturePacker {
     private static final String SPRITES_OUTPUT_DIR = "../android/assets/sprites/";
     private static final String SPRITES_PACK_FILE = "sprites";
 
+    private static final String UI_INPUT_DIR = "ui/";
+    private static final String UI_OUTPUT_DIR = "../android/assets/ui/";
+    private static final String UI_PACK_FILE = "ui";
+
     private static final float[] HUNDRED_PERCENT = new float[] {1f};
     private static final float[] FIFTY_PERCENT = new float[] {0.5f};
 
@@ -35,6 +39,7 @@ public class GameTexturePacker {
         settings.combineSubdirectories = true;
         TexturePacker.process(settings, INPUT_DIR, OUTPUT_DIR, PACK_FILE);
         TexturePacker.process(settings, SPRITES_INPUT_DIR, SPRITES_OUTPUT_DIR, SPRITES_PACK_FILE);
+        TexturePacker.process(settings, UI_INPUT_DIR, UI_OUTPUT_DIR, UI_PACK_FILE);
     }
 }
 
