@@ -9,7 +9,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         // default width and height, but setting with config.width in case I want to change it later
-        config.width = 640;
+        config.width = 800;
         config.height = 480;
 		new LwjglApplication(new CardGame(), config);
 	}

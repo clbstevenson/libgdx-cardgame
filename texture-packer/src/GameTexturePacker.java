@@ -39,7 +39,7 @@ public class GameTexturePacker {
         settings.combineSubdirectories = true;
         TexturePacker.process(settings, INPUT_DIR, OUTPUT_DIR, PACK_FILE);
         TexturePacker.process(settings, SPRITES_INPUT_DIR, SPRITES_OUTPUT_DIR, SPRITES_PACK_FILE);
-        TexturePacker.process(settings, UI_INPUT_DIR, UI_OUTPUT_DIR, UI_PACK_FILE);
+        //TexturePacker.process(settings, UI_INPUT_DIR, UI_OUTPUT_DIR, UI_PACK_FILE);
     }
 }
 

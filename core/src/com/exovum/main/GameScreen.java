@@ -58,15 +58,19 @@ public class GameScreen implements Screen {
         font.setColor(Color.ORANGE);
 
         camera = new OrthographicCamera();
-        viewport = new FitViewport(200, 200, camera);
-        viewport.apply(false);
+        viewport = new FitViewport(800, 480, camera);
+        viewport.apply(true);
 
         camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
         camera.update();
         //stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 
-        atlas = new TextureAtlas("ui/ui.atlas");
-        skin = new Skin(Gdx.files.internal("ui/uiskin.json"), atlas);
+        /*
+        atlas = new TextureAtlas("ui/uiskin-1.atlas");
+        skin = new Skin(Gdx.files.internal("ui/uiskin-1.json"), atlas);
+        */
+        atlas = new TextureAtlas("ui/uiskin-2.atlas");
+        skin = new Skin(Gdx.files.internal("ui/uiskin-2.json"), atlas);
 
         stage = new Stage(viewport, batch);
         // Add the stage as an InputProcessor
@@ -89,9 +93,9 @@ public class GameScreen implements Screen {
         mainTable.top();
 
         // Create the buttons
-        TextButton playButton = new TextButton("Play", skin, "container_gold");
-        TextButton optionsButton = new TextButton("Options", skin, "container_gold_small");
-        TextButton exitButton= new TextButton("Exit", skin, "container_gold");
+        TextButton playButton = new TextButton("Play the long-name game", skin, "small-font");
+        TextButton optionsButton = new TextButton("Options", skin, "small-font");
+        TextButton exitButton= new TextButton("Exit", skin, "small-font");
 
         // Add Input Listeners to buttons
         playButton.addListener(new ClickListener(){
@@ -128,6 +132,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        //stage.getBatch().setProjectionMatrix(camera.combined);
         stage.act();
         stage.draw();
 
@@ -143,8 +148,11 @@ public class GameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
-        camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
+        //camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
+        //camera.update();
         camera.update();
+        //stage.getCamera().position.set(stage.getCamera().viewportWidth/2, stage.getCamera().viewportHeight/2, 0);
+        //stage.getCamera().update();
     }
 
     @Override

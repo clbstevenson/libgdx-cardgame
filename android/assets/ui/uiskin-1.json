@@ -2,10 +2,10 @@
 
   "com.badlogic.gdx.graphics.g2d.BitmapFont": {
     "default": {
-      "file": "../fonts/candara16b.fnt"
+      "file": "../fonts/default-garamond-16.fnt"
     },
     "large": {
-      "file": "../fonts/candara36b.fnt"
+      "file": "../fonts/default-garamond-32.fnt"
     }
   },
 

@@ -38,7 +38,7 @@ public class SplashScreen extends ScreenAdapter {
             batch.setProjectionMatrix(cam.combined);
             batch.enableBlending();
             batch.begin();
-            batch.draw(Assets.splashScreen, 0f, 0f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.draw(Assets.splashScreen, 0f, 0f);//Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             batch.end();
 
             // TODO: Have a more interesting loading bar

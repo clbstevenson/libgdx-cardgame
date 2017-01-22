@@ -37,7 +37,7 @@ public class Assets {
         // add the TextureAtlas of sprites used in Animations to the AssetManager
         // TODO: am.load(ANIMATION_ATLAS, TEXTURE_ATLAS);
 
-        /* Load Sound assets
+        // Load Sound assets
         am.load("sounds/explosion-1.wav", SOUND);
         am.load("sounds/drop.wav", SOUND);
 
@@ -48,6 +48,8 @@ public class Assets {
         //am.load("sounds/song1.wav", MUSIC);
         am.load("sounds/music-fancy-shyster.wav", MUSIC);
         am.load("sounds/music-fancy-shyster.ogg", MUSIC);
+        /*
+
         */
 
         // add the TextureAtlas of static sprites to the AssetManager
