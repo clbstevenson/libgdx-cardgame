@@ -9,12 +9,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -86,6 +89,127 @@ public class GameScreen implements Screen {
     public void show() {
         Gdx.app.log("GameScreen", "Switched to GameScreen");
 
+        //generateMenuScreen(stage);
+        generateFrame1(stage);
+
+    }
+
+    private void generateFrame1(Stage stage) {
+
+        boolean debugTables = true;
+
+        Table mainTable = new Table();
+        mainTable.setFillParent(true);
+        // Set alignment of contents
+        //mainTable.align(Align.right);
+        mainTable.left();
+        mainTable.debugAll();
+//        if (debugTables)
+//            mainTable.debug();
+
+        // Opponent Section
+        // Create top section of Frame 1: Opponent's Deck and Grave
+        Table oppTable = new Table();
+        oppTable.setFillParent(false);
+        oppTable.center();
+//        if (debugTables)
+//            oppTable.debug();
+
+
+        //Create the Deck piles
+        Table oppDeckGrave = new Table();
+        //oppDeckGrave.setFillParent(false);
+//        if (debugTables)
+//            oppDeckGrave.debug();
+
+        // Deck and Grave testing buttons for opponent
+        final TextButton oppDeck = new TextButton("Opponent's\nDeck", skin, "small-font");
+        final TextButton oppGrave = new TextButton("Opponent's\nGrave", skin, "small-font");
+        oppDeck.setHeight(10);
+        oppGrave.setHeight(10);
+
+        // Add opponent's buttons to the oppDeckGrave table
+        oppDeckGrave.add(oppDeck);
+        oppDeckGrave.add(oppGrave);
+        addButtonListenerTo(oppDeck);
+        addButtonListenerTo(oppGrave);
+
+        // Add oppDeckGrave to the opponent's main table
+        oppTable.add(oppDeckGrave);
+
+
+        // Player Section
+        // Create bottom section of Frame 1: Player's Deck and Grave
+        Table playerTable = new Table();
+        playerTable.setFillParent(false);
+        playerTable.center();
+//        if (debugTables)
+//            playerTable.debug();
+
+        // Create the Deck pile
+        // TEMPORARY: use a button as a test
+        Table playerDeckGrave = new Table();
+        //playerDeckGrave.setFillParent(false);
+        //playerDeckGrave.center();
+//        if (debugTables)
+//            playerDeckGrave.debug();
+
+        final TextButton playerDeck = new TextButton("Player's\nDeck", skin, "small-font");
+        final TextButton playerGrave = new TextButton("Player's\nGrave", skin, "small-font");
+        //playerDeck.setFillParent(false);
+
+        addButtonListenerTo(playerDeck);
+        addButtonListenerTo(playerGrave);
+
+        /*
+        // Input Listener for testing the UI buttons
+        ClickListener buttonListener = new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (event.getRelatedActor() == playerDeck) {
+                    Gdx.app.log("GameScreen UI", "Pressed Player's Deck");
+                } else if(event.getRelatedActor() == playerGrave) {
+                    Gdx.app.log("GameScreen UI", "Pressed Player's Grave");
+                } else {
+                    Gdx.app.log("GameScreen UI", "Nothing was pressed?");
+                }
+
+                //((CardGame)Gdx.app.getApplicationListener()).setScreen(new  NextScreen());
+            }
+        };
+
+        playerDeck.addListener(buttonListener);
+        playerGrave.addListener(buttonListener);
+        */
+
+        // Add the buttons to the playerDeckGrave table
+        playerDeckGrave.add(playerDeck);
+        playerDeckGrave.add(playerGrave);
+        //playerDeckGrave.row();
+
+        // Add the playerDeckGrave table to be the top of the playerTable
+        playerTable.add(playerDeckGrave);
+
+        // Add the oppTable first, so it should be above the playerTable
+        mainTable.add(oppTable);
+        mainTable.row();
+        // Add the playerTable to be at the bottom of the Frame 1 table
+        mainTable.add(playerTable);
+
+        // Add the Frame 1 table to the stage
+        stage.addActor(mainTable);
+    }
+
+    private void addButtonListenerTo(final TextButton button) {
+        button.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Gdx.app.log("GameScreen UI", "Pressed Button:" + button.getLabel().getText());
+            }
+        });
+    }
+
+    private void generateMenuScreen(Stage stage) {
         Table mainTable = new Table();
         // Set table to fill the stage
         mainTable.setFillParent(true);
