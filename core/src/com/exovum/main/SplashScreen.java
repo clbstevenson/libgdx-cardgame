@@ -9,29 +9,35 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import com.exovum.tools.IScreenDispatcher;
 
-public class SplashScreen extends ScreenAdapter {
+class SplashScreen extends ScreenAdapter {
 
-    OrthographicCamera cam;
-    SpriteBatch batch;
+    private OrthographicCamera cam;
+    private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
     private IScreenDispatcher dispatcher;
 
-    public SplashScreen(SpriteBatch batch, IScreenDispatcher dispatcher) { //IScreenDispatcher dispatcher){
+    private int elapsedTime;
+    private final int splashScreenDisplayTime = 150;
+
+    SplashScreen(SpriteBatch batch, IScreenDispatcher dispatcher) { //IScreenDispatcher dispatcher){
         this.batch = batch;
         cam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.position.set(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f, 0f);
         this.dispatcher = dispatcher;
         this.shapeRenderer = new ShapeRenderer();
+
+        elapsedTime = 0;
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
 
-        if(Assets.am.update()){
+        if(Assets.am.update() && elapsedTime > splashScreenDisplayTime){
             Gdx.app.log("SplashScreen", "Assets are Loaded!");
             //Gdx.app.log("Splash Screen", "Assets.am.getProgress() = " + Assets.am.getProgress());
             dispatcher.endCurrentScreen();
+            elapsedTime = 0;
         }else {
 
             cam.update();
@@ -52,6 +58,8 @@ public class SplashScreen extends ScreenAdapter {
             //Gdx.app.log("Splash Screen", "cam.viewportWidth * Assets.am.getProgress() = " + cam.viewportWidth * Assets.am.getProgress());
             //shapeRenderer.rect(0, 0, cam.viewportWidth / 5f, cam.viewportHeight / 5f);
             shapeRenderer.end();
+
+            elapsedTime ++;
         }
     }
 

@@ -17,8 +17,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.exovum.tools.IScreenDispatcher;
@@ -27,7 +25,7 @@ import com.exovum.tools.IScreenDispatcher;
  * Created by Caleb Stevenson on 1/19/2017.
  *  com.exovum.main: GameScreen
  */
-public class GameScreen implements Screen {
+class GameScreen implements Screen {
 
     private SpriteBatch batch;
     private IScreenDispatcher screenDispatcher;
@@ -39,7 +37,7 @@ public class GameScreen implements Screen {
     private Viewport viewport;
 
     private TextureAtlas atlas;
-    protected Skin skin;
+    private Skin skin;
 
     private Stage stage;
 
@@ -52,7 +50,7 @@ public class GameScreen implements Screen {
     private BitmapFont white, black;
     */
 
-    public GameScreen(SpriteBatch batch, IScreenDispatcher screenDispatcher, Game game) {
+    private GameScreen(SpriteBatch batch, IScreenDispatcher screenDispatcher, Game game) {
         this.batch = batch;
         this.screenDispatcher = screenDispatcher;
         this.game = game;
@@ -81,15 +79,13 @@ public class GameScreen implements Screen {
     }
     //private
 
-    public void GameScreen() {
-
-    }
-
     @Override
     public void show() {
         Gdx.app.log("GameScreen", "Switched to GameScreen");
 
         //generateMenuScreen(stage);
+        generateFrame1(stage);
+        generateFrame1(stage);
         generateFrame1(stage);
 
     }
@@ -99,7 +95,7 @@ public class GameScreen implements Screen {
         boolean debugTables = true;
 
         Table mainTable = new Table();
-        mainTable.setFillParent(true);
+        //mainTable.setFillParent(true);
         // Set alignment of contents
         //mainTable.align(Align.right);
         mainTable.left();
