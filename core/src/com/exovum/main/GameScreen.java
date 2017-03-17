@@ -14,7 +14,9 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -38,6 +40,9 @@ class GameScreen implements Screen {
 
     private TextureAtlas atlas;
     private Skin skin;
+    // Note: When adding skin to Actors, rememeber to specify which skin font to use. For example:
+    //      TextButton specialFontButton = new TextButton("I'm Special!", skin, "special-font");
+    // Otherwise, the font for the button is garbledygook hieroglyphics.
 
     private Stage stage;
 
@@ -50,7 +55,7 @@ class GameScreen implements Screen {
     private BitmapFont white, black;
     */
 
-    private GameScreen(SpriteBatch batch, IScreenDispatcher screenDispatcher, Game game) {
+    public GameScreen(SpriteBatch batch, IScreenDispatcher screenDispatcher, Game game) {
         this.batch = batch;
         this.screenDispatcher = screenDispatcher;
         this.game = game;
@@ -76,6 +81,7 @@ class GameScreen implements Screen {
         stage = new Stage(viewport, batch);
         // Add the stage as an InputProcessor
         Gdx.input.setInputProcessor(stage);
+        // TODO: Create a InputMultiplexer to process multiple input sources (stage, keyboard, etc)
     }
     //private
 
@@ -84,9 +90,12 @@ class GameScreen implements Screen {
         Gdx.app.log("GameScreen", "Switched to GameScreen");
 
         //generateMenuScreen(stage);
+       /* generateFrame1(stage);
         generateFrame1(stage);
         generateFrame1(stage);
-        generateFrame1(stage);
+        */
+
+        generateTestButtons(stage);
 
     }
 
@@ -241,6 +250,21 @@ class GameScreen implements Screen {
         mainTable.add(exitButton);
 
         // Add table to stage
+        stage.addActor(mainTable);
+    }
+
+    private void generateTestButtons(Stage stage) {
+        Table mainTable = new Table();
+        mainTable.setFillParent(true);
+
+        TextField inputDBEntry =  new TextField("Label?", skin, "small-font");
+        mainTable.add(inputDBEntry);
+
+        TextButton addDBEntry = new TextButton("Add Item", skin, "small-font");
+        TextButton deleteDBEntry = new TextButton("Delete Item", skin, "small-font");
+        mainTable.add(addDBEntry);
+        mainTable.add(deleteDBEntry);
+
         stage.addActor(mainTable);
     }
 
