@@ -10,15 +10,23 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.exovum.tools.IScreenDispatcher;
@@ -46,6 +54,8 @@ class GameScreen implements Screen {
 
     private Stage stage;
 
+    private TestDatabase db;
+    private ActionResolver resolver;
 
     /*
     private TextureAtlas atlas;
@@ -83,6 +93,39 @@ class GameScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
         // TODO: Create a InputMultiplexer to process multiple input sources (stage, keyboard, etc)
     }
+
+    public GameScreen(SpriteBatch batch, IScreenDispatcher screenDispatcher, Game game,
+                      TestDatabase db, ActionResolver resolver) {
+        this.batch = batch;
+        this.screenDispatcher = screenDispatcher;
+        this.game = game;
+        this.db = db;
+        this.resolver = resolver;
+
+        font = new BitmapFont();
+        font.setColor(Color.ORANGE);
+
+        camera = new OrthographicCamera();
+        viewport = new FitViewport(800, 480, camera);
+        viewport.apply(true);
+
+        camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2,0);
+        camera.update();
+        //stage = new Stage(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
+
+        /*
+        atlas = new TextureAtlas("ui/uiskin-1.atlas");
+        skin = new Skin(Gdx.files.internal("ui/uiskin-1.json"), atlas);
+        */
+        atlas = new TextureAtlas("ui/uiskin-2.atlas");
+        skin = new Skin(Gdx.files.internal("ui/uiskin-2.json"), atlas);
+
+        stage = new Stage(viewport, batch);
+        // Add the stage as an InputProcessor
+        Gdx.input.setInputProcessor(stage);
+        // TODO: Create a InputMultiplexer to process multiple input sources (stage, keyboard, etc)
+    }
+
     //private
 
     @Override
@@ -254,18 +297,145 @@ class GameScreen implements Screen {
     }
 
     private void generateTestButtons(Stage stage) {
-        Table mainTable = new Table();
-        mainTable.setFillParent(true);
 
-        TextField inputDBEntry =  new TextField("Label?", skin, "small-font");
-        mainTable.add(inputDBEntry);
+
+        String entryLabel = "main table. debugging {main, input, entries}";
+
+
+
+        Table mainTable = new Table();
+        mainTable.debug();
+        mainTable.setFillParent(true);
+        //mainTable.center();
+
+        //mainTable.set
+
+        /*
+            Table for containing input: items to add/delete and buttons
+        */
+        Table inputTable = new Table();
+        inputTable.center();
+        inputTable.debug();
+
+        TextField inputDBEntry =  new TextField(entryLabel, skin, "small-font");
+        inputDBEntry.setAlignment(Align.center);
+        //inputDBEntry.set
+        inputTable.add(inputDBEntry).pad(10);//.fillY().align(Align.top);
+
+        inputTable.row();
 
         TextButton addDBEntry = new TextButton("Add Item", skin, "small-font");
         TextButton deleteDBEntry = new TextButton("Delete Item", skin, "small-font");
-        mainTable.add(addDBEntry);
-        mainTable.add(deleteDBEntry);
 
+        inputTable.add(addDBEntry);
+        inputTable.row();
+        inputTable.add(deleteDBEntry);
+
+
+        /*
+            Tables for list entries added to the DB
+        */
+        Table scrollEntriesTable = new Table();
+        scrollEntriesTable.debug();
+        scrollEntriesTable.center();
+
+        Table entriesTable = new Table();
+        //entriesTable.debug();
+        //entriesTable.left();
+
+        final ScrollPane scroll = new ScrollPane(entriesTable, skin);
+        //scroll.setScrollingDisabled(true, false);
+        //scroll.setWidth(10);
+        //scroll.setFadeScrollBars(true);
+
+
+        InputListener stopTouchDown = new InputListener() {
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                event.stop();
+                return false;
+            }
+        };
+
+        entriesTable.pad(10).defaults().expandX().space(4);
+        TestDatabase.Result q = db.query("SELECT * FROM 'products'");
+        int i = 0;
+        while (!q.isEmpty()) {
+            q.moveToNext();
+            System.out.println("Product: " + q.getString(q.getColumnIndex("name")));
+            entriesTable.row();
+
+            entriesTable.add(new Label("Product: " + i, skin, "small-font")).expandX().fillX();
+            entriesTable.add(new Label(q.getString(q.getColumnIndex("name")), skin, "small-font")).expandX().fillX();
+
+            TextButton button = new TextButton(i + "Remove", skin, "small-font");
+            entriesTable.add(button);
+            button.addListener(new ClickListener() {
+                public void clicked (InputEvent event, float x, float y) {
+                    System.out.println("click " + x + ", " + y);
+                    // TODO: Remove item
+                }
+            });
+        }
+        /*for (int i = 0; i < 100; i++) {
+            entriesTable.row();
+            entriesTable.add(new Label(i + "uno", skin, "small-font")).expandX().fillX();
+
+            //entriesTable.findActor()
+
+            TextButton button = new TextButton(i + "Remove", skin, "small-font");
+            entriesTable.add(button);
+            button.addListener(new ClickListener() {
+                public void clicked (InputEvent event, float x, float y) {
+                    System.out.println("click " + x + ", " + y);
+                    // TODO: Remove item
+                }
+            });
+
+            //Slider slider = new Slider(0, 100, 1, false, skin);
+            //slider.addListener(stopTouchDown); // Stops touchDown events from propagating to the FlickScrollPane.
+            //entriesTable.add(slider);
+
+            entriesTable.add(new Label(i + "tres long0 long1 long2 long3", skin, "small-font"));
+        }
+        */
+
+        //entriesTable.right();
+        //entriesTable.setFillParent(true);
+
+        //Group groupEntries = new Group();
+
+        //ScrollPane scrollEntries = new ScrollPane(groupEntries, skin);
+
+        /*
+        groupEntries.addActor(new Label("Apples", skin, "small-font"));
+        groupEntries.addActor(new Label("Popcorn", skin));
+        groupEntries.addActor(new Label("Mashed Potatoes", skin, "small-font"));
+        */
+
+        //entriesTable.add(groupEntries);
+        //        entriesTable.addActor(new Label("Apples", skin, "small-font"));
+//        entriesTable.add(new Label("Apples", skin, "small-font")).row();
+//        entriesTable.add(new Label("Popcorn", skin, "small-font")).row();
+//        entriesTable.add(new Label("Mashed Potatoes", skin, "small-font")).row();
+//        entriesTable.pad(10);
+
+        scrollEntriesTable.add(scroll).expand().fill().colspan(2);
+        scrollEntriesTable.row().space(10).padBottom(10);
+
+        // Combine all the tables to the main table
+        mainTable.add(inputTable).align(Align.left);
+        mainTable.add(scrollEntriesTable);//.align(Align.right);
+        //mainTable.add(entriesTable).align(Align.right);
+
+        //stage.addActor(entriesTable);
         stage.addActor(mainTable);
+
+
+
+    }
+
+    private void removeEntry() {
+
     }
 
     @Override
@@ -318,4 +488,6 @@ class GameScreen implements Screen {
     public void dispose() {
         font.dispose();
     }
+
+
 }

@@ -8,6 +8,7 @@ buildscript {
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
         classpath 'com.android.tools.build:gradle:2.3.0'
         classpath 'org.robovm:robovm-gradle-plugin:1.9.0'
+        //compile files('libs/gdx-sqlite.jar')
     }
 }
 
@@ -53,6 +54,7 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        //compile "org.sqldroid:sqldroid:1.0.3"
     }
 }
 
@@ -63,6 +65,7 @@ project(":android") {
 
     dependencies {
         compile project(":core")
+        compile fileTree(dir: 'libs', include: ['*.jar'])
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -73,6 +76,7 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
         compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+        //compile "org.sqldroid:sqldroid:1.0.3"
     }
 }
 
@@ -122,6 +126,7 @@ project(":core") {
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         compile "net.dermetfan.libgdx-utils:libgdx-utils-box2d:0.13.2"
         compile "net.dermetfan.libgdx-utils:libgdx-utils:0.13.2"
+        //compile "org.sqldroid:sqldroid:1.0.3"
     }
 }
 
