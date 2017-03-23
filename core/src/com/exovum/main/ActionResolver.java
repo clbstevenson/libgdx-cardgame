@@ -8,5 +8,5 @@ import java.sql.Connection;
 
 public interface ActionResolver {
     public Connection getConnection();
-
+    public void setupAWSCredentials();
 }

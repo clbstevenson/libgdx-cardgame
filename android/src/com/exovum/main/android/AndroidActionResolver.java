@@ -3,6 +3,8 @@ package com.exovum.main.android;
 import android.content.Context;
 import android.os.Handler;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.regions.Regions;
 import com.exovum.main.ActionResolver;
 
 import java.sql.Connection;
@@ -16,11 +18,12 @@ import java.sql.SQLException;
 public class AndroidActionResolver implements ActionResolver {
 
     Handler uiThread;
-    Context appContext;
+    Context context;
+    CognitoCachingCredentialsProvider credentialsProvider;
 
     public AndroidActionResolver(Context appContext) {
         uiThread = new Handler();
-        this.appContext = appContext;
+        this.context = appContext;
     }
 
     @Override
@@ -40,4 +43,15 @@ public class AndroidActionResolver implements ActionResolver {
         }
         return null;
     }
+
+    @Override
+    public void setupAWSCredentials() {
+        credentialsProvider = new CognitoCachingCredentialsProvider(
+                context,    /* get the context for the application */
+                "COGNITO_IDENTITY_POOL",    /* Identity Pool ID */
+                Regions.US_EAST_1           /* Region for your identity pool--US_EAST_1 or EU_WEST_1*/
+        );
+    }
+
+
 }

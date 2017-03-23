@@ -1,5 +1,7 @@
 package com.exovum.main;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.regions.Regions;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -31,16 +33,24 @@ public class CardGame extends Game {
         am = Assets.load();
         batch = new SpriteBatch();
 
+
+
+        // AmazonWebServices - Amazon Cognito connection
+        // These lines of code only function for Android [getApplicationContext()]
+        //  TODO Later: so a Desktop implementation will be needed.
+        //        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+        //                getApplicationContext(),    /* get the context for the application */
+        //                "COGNITO_IDENTITY_POOL",    /* Identity Pool ID */
+        //                Regions.MY_REGION           /* Region for your identity pool--US_EAST_1 or EU_WEST_1*/
+        //        );
+
         // Setup the screen dispatcher to switch between screens
         // TODO: Create custom ScreenDispatcher for CardGame
         screenDispatcher = new ScreenDispatcherWarmup();
-
         // Create the screens
         Screen splashScreen = new SplashScreen(batch, screenDispatcher);
         Screen gameScreen = new GameScreen(batch, screenDispatcher, this);
-
         // Add the screens to the dispatcher
-
         screenDispatcher.addScreen(splashScreen);
         screenDispatcher.addScreen(gameScreen);
 
