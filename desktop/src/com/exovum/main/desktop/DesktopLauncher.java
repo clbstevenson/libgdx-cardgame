@@ -2,9 +2,7 @@ package com.exovum.main.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.exovum.gdxsqlitetest.DatabaseTest;
-import com.exovum.main.CardGame;
-import com.exovum.main.CardGameDBTest;
+import com.exovum.dbsample.DatabaseTest;
 //import com.exovum.tools.LD37Game;
 
 public class DesktopLauncher {

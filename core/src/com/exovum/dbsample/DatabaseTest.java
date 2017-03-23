@@ -1,4 +1,4 @@
-package com.exovum.gdxsqlitetest;
+package com.exovum.dbsample;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
