@@ -30,7 +30,7 @@ The game ends when one player has no cards remaining in their play area after an
 
 ## User Interface
 
-To preserve space, the design process and additional images of the User Interface have been moved to [README_UI]("README_UI.md").
+To preserve space, the design process and additional images of the User Interface have been moved to [README_UI](README_UI.md).
 
 For this project, the plan is to use Scene2D for constructing the user interface. For the overview of the game area including the side areas, there should be three sections laid out horizontally.
 
