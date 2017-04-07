@@ -55,22 +55,23 @@ Creature cards may have **powers** and **abilities**.
   Powers are activated skills/functions that may cost a certain number of the controlling player's power tokens. Most powers can be used once each turn, however they may be some more interesting powers that can only be used once per game. It may be necessary to label the per-turn and per-game powers separately, such as "power" vs. "superpower" (tbd). To activate a power, the player must first click on the creature and then click on the power. Once the power is used, it will be grayed out until it can be used again (next turn or next game).
 
   Examples of powers include:
-   * Power [1]: Deal 2 damage to one enemy creature.
-   * Power [2]: Switch opponents primary creature with a waiting creature of your choice.
-   * Power [1]: Gain 2 power tokens
-   * Power [4]: Sacrifice *this creature*: Kill your opponent's primary creature.
-   * Super Power(tbd) [5]: Switch your opponent's primary creature with a waiting creature of your choice. Deal 5 damage to both of those creatures.
+    * Power [1]: Deal 2 damage to one enemy creature.
+    * Power [2]: Switch opponents primary creature with a waiting creature of your choice.
+    * Power [1]: Gain 2 power tokens
+    * Power [4]: Sacrifice *this creature*: Kill your opponent's primary creature.
+    * Super Power(tbd) [5]: Switch your opponent's primary creature with a waiting creature of your choice. Deal 5 damage to both of those creatures.
+
 
   * **Abilities**
 
   Abilities are passive skills that may trigger automatically and do not require manual activation by the player. The abilities can be triggered at the start of the turn, end of the turn, when the creature attacks, or any other sort of trigger. In order for the player to know when a power is triggered, the card may be displayed or enlarged in some manner to make it obvious (similar to Hearthstone displaying playing cards).
 
   Examples of abilities include:
-   * Ability: Whenever *this creature* is dealt damage, deal 1 damage to all other creatures.
-   * Ability: If *this creature* is your only creature in play at the beginning of your turn, *this creature* gains 5 Life.
-   * Ability: When *this creature* is dealt damage, you *may* have another creature gain that much Life.
-   * Ability: When *this creature* is put into the graveyard, you *may* switch your opponent's primary creature with a waiting creature of your choice.
-   * Ability: At the beginning of your turn if *this creature* is in a waiting slot, gain 1 Power token.
+    * Ability: Whenever *this creature* is dealt damage, deal 1 damage to all other creatures.
+    * Ability: If *this creature* is your only creature in play at the beginning of your turn, *this creature* gains 5 Life.
+    * Ability: When *this creature* is dealt damage, you *may* have another creature gain that much Life.
+    * Ability: When *this creature* is put into the graveyard, you *may* switch your opponent's primary creature with a waiting creature of your choice.
+    * Ability: At the beginning of your turn if *this creature* is in a waiting slot, gain 1 Power token.
 
 
 ### Aesthetics
