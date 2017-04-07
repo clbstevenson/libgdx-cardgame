@@ -50,7 +50,7 @@ The functional abilities and interactions of the cards will be similar to the or
 #### Powers and Abilities
 Creature cards may have **powers** and **abilities**.
 
-  * **Powers**
+* **Powers**
 
   Powers are activated skills/functions that may cost a certain number of the controlling player's power tokens. Most powers can be used once each turn, however they may be some more interesting powers that can only be used once per game. It may be necessary to label the per-turn and per-game powers separately, such as "power" vs. "superpower" (tbd). To activate a power, the player must first click on the creature and then click on the power. Once the power is used, it will be grayed out until it can be used again (next turn or next game).
 
@@ -60,9 +60,9 @@ Creature cards may have **powers** and **abilities**.
    * Power [1]: Gain 2 power tokens
    * Power [4]: Sacrifice *this creature*: Kill your opponent's primary creature.
    * Super Power(tbd) [5]: Switch your opponent's primary creature with a waiting creature of your choice. Deal 5 damage to both of those creatures.
-   
 
-  * **Abilities**
+
+* **Abilities**
 
   Abilities are passive skills that may trigger automatically and do not require manual activation by the player. The abilities can be triggered at the start of the turn, end of the turn, when the creature attacks, or any other sort of trigger. In order for the player to know when a power is triggered, the card may be displayed or enlarged in some manner to make it obvious (similar to Hearthstone displaying playing cards).
 
